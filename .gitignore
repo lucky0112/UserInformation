@@ -1,4 +1,4 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+git remote add origin https://github.com/lucky0112/UserInformation.git# See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
