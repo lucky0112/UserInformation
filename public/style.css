@@ -1,0 +1,54 @@
+.App-header{
+    padding-left: 20px;
+}
+
+.user-data{
+    background-color: darkgray;
+}
+
+
+.userCard{
+    margin-top: 1px;
+    padding-left: 3px;
+    padding-right: 4px;
+    margin-bottom: 1px;
+}
+
+.user-heading {
+    padding-top: 20px;
+    font-size: 24px;
+}
+
+.user-image{
+    width: 200px;
+}
+
+
+
+.user-list {
+    height: 83%;
+    width: 400px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding-left: 20px;
+    overflow-x: hidden;
+    padding-top: 20px;
+    position: fixed;
+    margin-top: 72px;
+}
+
+.user-details {
+    margin-left: 400px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+}
+
+.select-album {
+    margin-left: 650px;
+    margin-top: 200px;
+    font-size: xx-large;
+
+}
+
+
+
