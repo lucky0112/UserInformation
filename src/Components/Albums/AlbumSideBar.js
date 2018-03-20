@@ -14,8 +14,6 @@ const sideBarStyle = {
 export default class SideBar extends React.Component {
 
     render() {
-        console.log("SideBar Props");
-        console.log(this.props);
         const albumList = _.map(this.props.albums,(value,key) => {
             return(
                 <MenuItem onClick={() => this.props.albumClick(value.id)} key={key}>{value.title}</MenuItem>

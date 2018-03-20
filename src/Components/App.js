@@ -22,16 +22,12 @@ class App extends Component {
     };
 
     handleClickedUser(userId){
-        console.log("Clicked");
-        console.log(userId);
         this.setState({
             selectedUser:userId
         })
     };
 
     render() {
-        console.log("Props");
-        console.log(this.props.users);
         return (
             <div className="user-data">
                 <div className="user-list">

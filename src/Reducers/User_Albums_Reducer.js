@@ -6,13 +6,21 @@ import _ from 'lodash';
 
 let initialState = {
     data:{},
-    error: null
-}
+    error: null,
+    userAlbumID : 0,
+    userSelected: []
+};
 
 export default function (state=initialState,action) {
     switch (action.type){
         case FETCH_USER_ALBUMS:
-            return {...state,data:_.mapKeys(action.payload.data,"id")};
+            let data = {...state.data,..._.mapKeys(action.payload.result.data,"id")};
+            return {
+                ...state,
+                data: {...data} ,
+                userAlbumID:action.payload.userID,
+                userSelected: [...state.userSelected,action.payload.userID]
+            };
         default :
             return state
     }

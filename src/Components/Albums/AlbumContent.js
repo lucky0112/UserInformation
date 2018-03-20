@@ -23,7 +23,6 @@ class GridListExampleSimple extends React.Component{
 
     render(){
         const {albumData} = this.props;
-        console.log(this.props);
         return(
             <div style={styles.root}>
                 <GridList

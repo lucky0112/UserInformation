@@ -4,10 +4,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SideBar from './AlbumSideBar';
-import TopBar from '../TopBar';
-import { fetchUserAlbums } from '../../Actions';
-import { fetchPhotos } from '../../Actions';
+import { fetchPhotos, fetchCachePhoto, fetchUserAlbums} from '../../Actions';
 import GridListExampleSimple from './AlbumContent';
+import SelectedAlbumSelector from '../../selectors/selected_album';
+import SelectedPhotoSelector from '../../selectors/selected_photos';
 
 
 class AlbumsContainer extends Component{
@@ -22,18 +22,24 @@ class AlbumsContainer extends Component{
     }
 
     componentDidMount() {
-        this.props.fetchUserAlbums(this.props.match.params.id)
+        if (this.props.albumSelected.indexOf(this.props.match.params.id)<0){
+            this.props.fetchUserAlbums(this.props.match.params.id)
+        }
+
     }
 
     async handleAlbumClick(albumId){
-        await this.props.fetchPhotos(albumId);
+        if (this.props.photoSelected.indexOf(albumId)<0){
+            await this.props.fetchPhotos(albumId);
+        }
+        else {
+            await this.props.fetchCachePhoto(albumId);
+        }
         this.setState({albumId});
         this.setState({photoData:this.props.photos})
     }
 
     render(){
-        console.log("AlbumContainer Props");
-        console.log(this.props);
         return(
             <div>
                 <SideBar albums = {this.props.userAlbum} albumClick = {this.handleAlbumClick}/>
@@ -43,14 +49,18 @@ class AlbumsContainer extends Component{
     }
 }
 
+
+
 function mapStateToProps(state) {
     return{
-        userAlbum: state.UserAlbumReducer.data,
-        photos: state.AlbumPhotosReducer.data
+        userAlbum: SelectedAlbumSelector(state),
+        albumSelected: state.UserAlbumReducer.userSelected,
+        photos: SelectedPhotoSelector(state),
+        photoSelected: state.AlbumPhotosReducer.albumSelected
     }
 }
 
 
 
 
-export default connect(mapStateToProps,{fetchUserAlbums,fetchPhotos})(AlbumsContainer);
+export default connect(mapStateToProps,{fetchUserAlbums,fetchPhotos,fetchCachePhoto})(AlbumsContainer);

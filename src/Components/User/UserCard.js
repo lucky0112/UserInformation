@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const UserCard = (props) => {
     return(
-        <div className="userCard">
+        <div className="user-card">
             <Card style={{cursor:'pointer'}} onClick={()=>props.onUserClick(props.value.id)}>
                 <CardHeader
                     title={props.value.name}

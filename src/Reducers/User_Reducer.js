@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 let initialState = {
     data : {},
-    error : null
+    error : null,
 }
 
 export default function (state=initialState,action) {
