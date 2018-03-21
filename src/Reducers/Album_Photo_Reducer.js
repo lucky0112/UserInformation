@@ -12,8 +12,6 @@ let initialState = {
 };
 
 export default function (state=initialState,action) {
-    console.log("action");
-    console.log(action);
     switch (action.type){
         case FETCH_ALBUM_PHOTOS:
             let data = {...state.data,..._.mapKeys(action.payload.result.data,"id")};

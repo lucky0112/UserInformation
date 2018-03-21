@@ -15,7 +15,7 @@ const UserCard = (props) => {
                 />
                 <CardActions>
                     <FlatButton label="User Albums" containerElement={<Link to={`/albums/${props.value.id}`}/>} secondary={true}/>
-                    <FlatButton label="User Posts" secondary={true} containerElement={<Link to="/login" />}/>
+                    <FlatButton label="User Posts" secondary={true} containerElement={<Link to={`/userPost/${props.value.id}`}/>}/>
 
                 </CardActions>
                 <CardText expandable={true}>
